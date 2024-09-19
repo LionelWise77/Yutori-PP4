@@ -1,1 +1,1 @@
-web: gunicorn yutori.wsgi --log-file -
+web: gunicorn yutori.wsgi 
