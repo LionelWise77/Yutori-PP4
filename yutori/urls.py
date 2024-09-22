@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from spa.views import my_spa
+from spa import views 
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('spa/', my_spa, name='spa'),
+    path('services/', views.service_list, name='service_list'),
+    path('book/', views.book_appointment, name='book_appointment'),
+    path('appointments/', views.appointment_list, name='appointment_list'),
+    path('invoice/<int:appointment_id>/', views.view_invoice, name='view_invoice'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

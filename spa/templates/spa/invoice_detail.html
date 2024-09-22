@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Invoice</h2>
+<p>Client: {{ invoice.client.user.username }}</p>
+<p>Service: {{ invoice.appointment.service.name }}</p>
+<p>Total: ${{ invoice.total_amount }}</p>
+<p>Date Issued: {{ invoice.date_issued }}</p>
+{% endblock %}
