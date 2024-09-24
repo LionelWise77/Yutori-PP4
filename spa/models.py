@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# you create your models here
 
 class Client(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -10,6 +10,14 @@ class Client(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Service(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return self.name
 
 class TreatmentService(models.Model):
     name = models.CharField(max_length=100)
@@ -21,7 +29,7 @@ class TreatmentService(models.Model):
 
 class Appointment(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    service = models.ForeignKey(TreatmentService, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)  # Ensure 'Service' is defined before use
     appointment_date = models.DateTimeField()
     status = models.CharField(max_length=20, choices=[
         ('scheduled', 'Scheduled'),

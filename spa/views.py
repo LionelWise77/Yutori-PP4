@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Client, TreatmentService, Appointment, Invoice
+from .models import Client, TreatmentService, Appointment, Invoice, Service
 from .forms import AppointmentForm
 from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -31,20 +32,10 @@ def appointment_list(request):
 @login_required
 def view_invoice(request, appointment_id):
     appointment = get_object_or_404(Appointment, id=appointment_id)
-    invoice = Invoice.objects.get(appointment=appointment)
-    return render(request, 'spa/invoice_detail.html', {'invoice': invoice})
-
-
-def appointment_list(request):
-    user = request.user
-    try:
-        client = user.client  # This line raises the error if the user has no client
-        appointments = client.appointments.all()
-    except Client.DoesNotExist:
-        # Handle the case where the user does not have a client
-        appointments = []
     
-    context = {
-        'appointments': appointments
-    }
-    return render(request, 'spa/appointments_list.html', context)
+    # Ensure the appointment belongs to the client
+    if appointment.client != request.user.client:
+        return redirect('appointment_list')  # Redirect if the user does not own the appointment
+    
+    invoice = get_object_or_404(Invoice, appointment=appointment)
+    return render(request, 'spa/invoice_detail.html', {'invoice': invoice})

@@ -1,12 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'spa/base.html' %}
 
 {% block title %}Services{% endblock %}
 
 {% block content %}
-<h2>Available Services</h2>
+<h2>Our Services</h2>
 <ul>
     {% for service in services %}
         <li>{{ service.name }} - ${{ service.price }}</li>
+    {% empty %}
+        <li>No services available.</li>   
     {% endfor %}
 </ul>
 {% endblock %}
