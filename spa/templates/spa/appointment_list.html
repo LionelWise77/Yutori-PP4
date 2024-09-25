@@ -5,6 +5,8 @@
 <ul>
     {% for appointment in appointments %}
         <li>{{ appointment.service.name }} - {{ appointment.appointment_date }} - {{ appointment.status }}</li>
+    {% empty %}
+        <li>You have no appointments.</li>    
     {% endfor %}
 </ul>
 {% endblock %}
