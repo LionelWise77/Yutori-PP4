@@ -1,0 +1,35 @@
+/* Calming neutral tones */
+body {
+    background-color: #F8F9FA;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Minimalist navbar */
+.navbar {
+    background-color: #37503d;
+    padding: 1rem;
+}
+
+.navbar a {
+    color: #4A4A4A;
+    font-weight: 600;
+}
+
+/* Full-width image sections */
+.fullwidth-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+/* Button hover effects */
+.btn-custom {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #388E3C;
+}

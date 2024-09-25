@@ -13,6 +13,13 @@ def service_list(request):
 
 @login_required
 def book_appointment(request):
+    try:
+        # Ensure that the user has a client
+        client = request.user.client
+    except Client.DoesNotExist:
+        # Create a client object for the user if it doesn't exist
+        client = Client.objects.create(user=request.user)
+        
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
@@ -33,9 +40,9 @@ def appointment_list(request):
 def view_invoice(request, appointment_id):
     appointment = get_object_or_404(Appointment, id=appointment_id)
     
-    # Ensure the appointment belongs to the client
+    # Ensuring the appointment belongs to the client
     if appointment.client != request.user.client:
-        return redirect('appointment_list')  # Redirect if the user does not own the appointment
+        return redirect('appointment_list')  # Redirecting if the user does not own the appointment
     
     invoice = get_object_or_404(Invoice, appointment=appointment)
     return render(request, 'spa/invoice_detail.html', {'invoice': invoice})
