@@ -67,8 +67,30 @@ def register(request):
 
 @login_required
 def my_appointments(request):
-    # Lógica para mostrar las citas del cliente autenticado
-    pass    
+    appointments = Appointment.objects.filter(client=request.user.client)
+
+    if request.method == 'POST':
+        # Eliminar cita
+        if 'delete' in request.POST:
+            appointment_id = request.POST.get('appointment_id')
+            appointment = get_object_or_404(Appointment, id=appointment_id)
+            if appointment.client == request.user.client:
+                appointment.delete()
+                return redirect('appointment_list')
+        # Reprogramar cita
+        elif 'reschedule' in request.POST:
+            appointment_id = request.POST.get('appointment_id')
+            appointment = get_object_or_404(Appointment, id=appointment_id)
+            if appointment.client == request.user.client:
+                form = AppointmentForm(request.POST, instance=appointment)
+                if form.is_valid():
+                    form.save()
+                    return redirect('appointment_list')
+    else:
+        form = AppointmentForm()
+
+    return render(request, 'spa/appointment_list.html', {'appointments': appointments, 'form': form})
+
 
 def login_view(request):
     if request.method == 'POST':
