@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Welcome to YutoriSpa
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    
+        <h1 class="text-center">Welcome To YutoriSpa</h1>
+        <p class="text-center">Explore our Services</p>
+    <!-- First File -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="{% static 'images/spa1.jpg' %}" alt="Imagen de ejemplo">
+
+        </div>
+        <div class="col-md-6">
+            <h3>Hösterbjudande Utvalda Dagar</h3>
+            <h1>30% Rabatt på Övernattning med Bad, Aktiviteter & Frukost</h1>
+            <a href="{% url 'book_appointment' %}" class="btn btn-danger btn-lg mt-3">Boka nu</a>
+        </div>
+    </div>
+
+    <!-- Second File -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 order-md-2">
+            <img src="{% static 'images/spa2.jpg' %}" alt="Imagen de ejemplo">
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h5>Ett unikt paket med övernattning och middag</h5>
+            <h2>Dags att Fira med Glädje, Inspiration & Avkoppling</h2>
+            <a href="{% url 'book_appointment' %}" class="btn btn-outline-dark btn-lg mt-3">Läs mer och boka</a>
+        </div>
+    </div>
+
+    <!-- third file -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="{% static 'images/sparelax.jpg' %}" alt="Imagen de ejemplo">
+        </div>
+        <div class="col-md-6">
+            <h3>Aktiviteter & Relax</h3>
+            <p>Una variedad de servicios diseñados para relajarte y reponer energías.</p>
+            <a href="{% url 'book_appointment' %}" class="btn btn-primary btn-lg mt-3">Descubre más</a>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5"></div>
+        <div class="col-md-6 order-md-2">
+            <img src="{% static 'img/imagen.jpg' %}" alt="Imagen de ejemplo">
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h5>Ett unikt paket med övernattning och middag</h5>
+            <h2>Dags att Fira med Glädje, Inspiration & Avkoppling</h2>
+            <a href="{% url 'book_appointment' %}" class="btn btn-outline-dark btn-lg mt-3">Läs mer och boka</a>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="{% static 'img/imagen.jpg' %}" alt="Imagen de ejemplo">
+        </div>
+        <div class="col-md-6">
+            <h3>Aktiviteter & Relax</h3>
+            <p>Una variedad de servicios diseñados para relajarte y reponer energías.</p>
+            <a href="{% url 'book_appointment' %}" class="btn btn-primary btn-lg mt-3">Descubre más</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    h1, h2, h3 {
+        font-weight: bold;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+
+    .img-fluid {
+        border-radius: 8px;
+    }
+</style>
+
+{% endblock %}
+
