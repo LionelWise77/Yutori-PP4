@@ -10,18 +10,16 @@ from django.contrib.auth import login
 
 @login_required
 def service_list(request):
-    services = TreatmentService.objects.all()
+    services = Service.objects.all()
     return render(request, 'spa/service_list.html', {'services': services})
 
 @login_required
-def book_appointment(request):
-    try:
-        # Ensure that the user has a client
-        client = request.user.client
-    except Client.DoesNotExist:
-        # Create a client object for the user if it doesn't exist
-        client = Client.objects.create(user=request.user)
-        
+def book_appointment(request, service_id=None):
+    if service_id:
+        service = get_object_or_404(Service, id=service_id)
+    else:
+        service = None
+
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
@@ -30,8 +28,10 @@ def book_appointment(request):
             appointment.save()
             return redirect('appointment_list')
     else:
-        form = AppointmentForm()
+        form = AppointmentForm(initial={'service': service})
+
     return render(request, 'spa/book_appointment.html', {'form': form})
+
 
 @login_required
 def appointment_list(request):
@@ -70,26 +70,28 @@ def my_appointments(request):
     appointments = Appointment.objects.filter(client=request.user.client)
 
     if request.method == 'POST':
-        # Eliminar cita
+        appointment_id = request.POST.get('appointment_id')
+        appointment = get_object_or_404(Appointment, id=appointment_id)
+
+        # Handle appointment deletion
         if 'delete' in request.POST:
-            appointment_id = request.POST.get('appointment_id')
-            appointment = get_object_or_404(Appointment, id=appointment_id)
             if appointment.client == request.user.client:
                 appointment.delete()
-                return redirect('appointment_list')
-        # Reprogramar cita
+                return redirect('my_appointments')  # Redirect after deletion
+
+        # Handle appointment rescheduling
         elif 'reschedule' in request.POST:
-            appointment_id = request.POST.get('appointment_id')
-            appointment = get_object_or_404(Appointment, id=appointment_id)
             if appointment.client == request.user.client:
                 form = AppointmentForm(request.POST, instance=appointment)
                 if form.is_valid():
                     form.save()
-                    return redirect('appointment_list')
+                    return redirect('my_appointments')  # Redirect after rescheduling
+
     else:
         form = AppointmentForm()
 
     return render(request, 'spa/appointment_list.html', {'appointments': appointments, 'form': form})
+
 
 
 def login_view(request):

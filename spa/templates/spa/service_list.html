@@ -1,14 +1,27 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}Services{% endblock %}
+{% extends 'spa/base.html' %}
+{% block title %}Our Services{% endblock %}
 
 {% block content %}
-<h2>Our Services</h2>
-<ul>
-    {% for service in services %}
-        <li>{{ service.name }} - ${{ service.price }}</li>
-    {% empty %}
-        <li>No services available.</li>   
-    {% endfor %}
-</ul>
+<div class="container mt-4">
+    <h1 class="text-center">OUR SERVICES</h1>
+
+    <div class="row">
+        {% if services %}
+            {% for service in services %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.name }}</h5>
+                            <p class="card-text">{{ service.description }}</p>
+                            <p class="card-text"><strong>Price:</strong> ${{ service.price }}</p>
+                            <a href="{% url 'book_appointment_with_service' service.id %}" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No services available.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

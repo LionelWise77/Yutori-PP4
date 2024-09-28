@@ -1,5 +1,5 @@
 {% extends 'spa/base.html' %}
-{% block title %}Mis Citas{% endblock %}
+{% block title %}My Appointments{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
@@ -11,30 +11,35 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ appointment.service.name }}</h5>
-                    <p class="card-text"><strong>Date:</strong> {{ appointment.date }}</p>
-                    <p class="card-text"><strong>Time:</strong> {{ appointment.time }}</p>
+                    <p class="card-text"><strong>Date:</strong> {{ appointment.appointment_date|date:"Y-m-d" }}</p>
+                    <p class="card-text"><strong>Time:</strong> {{ appointment.appointment_date|time:"H:i" }}</p>
+
 
                     <!-- Buttons Reschedule and Delete -->
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rescheduleModal{{ appointment.id }}">Reschedule</button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                        data-bs-target="#rescheduleModal{{ appointment.id }}">Reschedule</button>
 
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ appointment.id }}">Delete</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal{{ appointment.id }}">Delete</button>
                 </div>
             </div>
         </div>
 
-        <!-- Modal  -->
-        <div class="modal fade" id="rescheduleModal{{ appointment.id }}" tabindex="-1" aria-labelledby="rescheduleModalLabel{{ appointment.id }}" aria-hidden="true">
+        <!-- Modal for Rescheduling -->
+        <div class="modal fade" id="rescheduleModal{{ appointment.id }}" tabindex="-1"
+            aria-labelledby="rescheduleModalLabel{{ appointment.id }}" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="rescheduleModalLabel{{ appointment.id }}">Reschedule appointment</h5>
+                        <h5 class="modal-title" id="rescheduleModalLabel{{ appointment.id }}">Reschedule appointment
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="{% url 'appointment_list' %}">
+                        <form method="post" action="{% url 'my_appointments' %}">
                             {% csrf_token %}
                             <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
-                            {{ form.as_p }} <!-- Formulario para editar cita -->
+                            {{ form.as_p }} <!-- Form for editing appointment -->
                             <button type="submit" name="reschedule" class="btn btn-primary">Confirm Reschedule</button>
                         </form>
                     </div>
@@ -42,8 +47,9 @@
             </div>
         </div>
 
-        <!-- Modal para Eliminar -->
-        <div class="modal fade" id="deleteModal{{ appointment.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ appointment.id }}" aria-hidden="true">
+        <!-- Modal for Deleting -->
+        <div class="modal fade" id="deleteModal{{ appointment.id }}" tabindex="-1"
+            aria-labelledby="deleteModalLabel{{ appointment.id }}" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -51,10 +57,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>¿Are you sure that you want to delete this appointment?</p>
+                        <p>Are you sure that you want to delete this appointment?</p>
                     </div>
                     <div class="modal-footer">
-                        <form method="post" action="{% url 'appointment_list' %}">
+                        <form method="post" action="{% url 'my_appointments' %}">
                             {% csrf_token %}
                             <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
@@ -66,7 +72,7 @@
         </div>
         {% empty %}
         <div class="col-12 text-center">
-            <p>you dont have Appointments.</p>
+            <p>You don't have any appointments.</p>
         </div>
         {% endfor %}
     </div>

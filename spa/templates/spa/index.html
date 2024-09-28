@@ -1,88 +1,69 @@
-{% extends 'base.html' %}
+{% extends 'spa/base.html' %}
 {% load static %}
+
 {% block title %}
     Welcome to YutoriSpa
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    
-        <h1 class="text-center">Welcome To YutoriSpa</h1>
-        <p class="text-center">Explore our Services</p>
-    <!-- First File -->
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6">
-            <img src="{% static 'images/spa1.jpg' %}" alt="Imagen de ejemplo">
-
-        </div>
-        <div class="col-md-6">
-            <h3>Hösterbjudande Utvalda Dagar</h3>
-            <h1>30% Rabatt på Övernattning med Bad, Aktiviteter & Frukost</h1>
-            <a href="{% url 'book_appointment' %}" class="btn btn-danger btn-lg mt-3">Boka nu</a>
-        </div>
-    </div>
-
-    <!-- Second File -->
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6 order-md-2">
-            <img src="{% static 'images/spa2.jpg' %}" alt="Imagen de ejemplo">
-        </div>
-        <div class="col-md-6 order-md-1">
-            <h5>Ett unikt paket med övernattning och middag</h5>
-            <h2>Dags att Fira med Glädje, Inspiration & Avkoppling</h2>
-            <a href="{% url 'book_appointment' %}" class="btn btn-outline-dark btn-lg mt-3">Läs mer och boka</a>
-        </div>
-    </div>
-
-    <!-- third file -->
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6">
-            <img src="{% static 'images/sparelax.jpg' %}" alt="Imagen de ejemplo">
-        </div>
-        <div class="col-md-6">
-            <h3>Aktiviteter & Relax</h3>
-            <p>Una variedad de servicios diseñados para relajarte y reponer energías.</p>
-            <a href="{% url 'book_appointment' %}" class="btn btn-primary btn-lg mt-3">Descubre más</a>
-        </div>
-    </div>
-
-    <div class="row align-items-center mb-5"></div>
-        <div class="col-md-6 order-md-2">
-            <img src="{% static 'img/imagen.jpg' %}" alt="Imagen de ejemplo">
-        </div>
-        <div class="col-md-6 order-md-1">
-            <h5>Ett unikt paket med övernattning och middag</h5>
-            <h2>Dags att Fira med Glädje, Inspiration & Avkoppling</h2>
-            <a href="{% url 'book_appointment' %}" class="btn btn-outline-dark btn-lg mt-3">Läs mer och boka</a>
-        </div>
-    </div>
-
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6">
-            <img src="{% static 'img/imagen.jpg' %}" alt="Imagen de ejemplo">
-        </div>
-        <div class="col-md-6">
-            <h3>Aktiviteter & Relax</h3>
-            <p>Una variedad de servicios diseñados para relajarte y reponer energías.</p>
-            <a href="{% url 'book_appointment' %}" class="btn btn-primary btn-lg mt-3">Descubre más</a>
+<!-- Fullscreen background section -->
+<div class="hero-section">
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+        <div class="text-center text-white">
+            <h1 class="display-4">Welcome to YutoriSpa</h1>
+            <p class="lead">Relax, rejuvenate, and recharge</p>
+            <a href="{% url 'service_list' %}" class="btn btn-lg btn-primary">Explore Our Services</a>
         </div>
     </div>
 </div>
 
-<style>
-    h1, h2, h3 {
-        font-weight: bold;
-    }
 
-    .btn {
-        padding: 10px 20px;
-        font-size: 18px;
-    }
 
-    .img-fluid {
-        border-radius: 8px;
-    }
-</style>
-
+<!-- Other content below the hero section -->
+<div class="container mt-5">
+    <!-- Add any other sections or content you'd like -->
+</div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    .hero-section {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay for better readability */
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-content p {
+        font-size: 1.25rem;
+    }
+
+    .hero-content .btn {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}

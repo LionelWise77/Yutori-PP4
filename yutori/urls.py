@@ -27,10 +27,12 @@ urlpatterns = [
     path('services/', views.service_list, name='service_list'),
     path('book/', views.book_appointment, name='book_appointment'),
     path('appointments/', views.appointment_list, name='appointment_list'),
+    path('my-appointments/', views.my_appointments, name='my_appointments'),
     path('invoice/<int:appointment_id>/', views.view_invoice, name='view_invoice'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('register/', views.register, name='register'),  
+    path('register/', views.register, name='register'),
+    path('book/<int:service_id>/', views.book_appointment, name='book_appointment_with_service'),
 ]
 
 from django.conf import settings
