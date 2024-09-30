@@ -13,6 +13,37 @@ h2 {
     margin-bottom: 30px;
 }
 
+.navbar {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Larger font for the brand name */
+}
+
+.nav-link {
+    color: #5a5a5a; /* Neutral text color */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.nav-item .btn-primary {
+    background-color: #007bff; /* Customize login button color */
+    border-color: #007bff;
+}
+
+.nav-item .btn-primary:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
+
+.navbar-toggler {
+    border: none; /* Remove the default border on the toggle button */
+}
+
+
 /* Form */
 form {
     background-color: #fff;
@@ -66,7 +97,7 @@ form input:focus, form select:focus, form textarea:focus {
 /* Style Hero Section */
 
 .hero-section {
-    background-image: url("/static/images/exploreservices.jpg"); 
+    background-image: url("/static/images/explore2.webp"); 
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -133,15 +164,15 @@ form input:focus, form select:focus, form textarea:focus {
 
 /* Services img Style */
 .service-1 {
-    background-image: url('/static/images/service1.jpg'); 
+    background-image: url('/static/images/spa1.jpg'); 
 }
 
 .service-2 {
-    background-image: url('/static/images/service2.jpg');
+    background-image: url('/static/images/spa2.jpg');
 }
 
 .service-3 {
-    background-image: url('/static/images/service3.jpg');
+    background-image: url('/static/images/sparelax.jpg');
 }
 
 
