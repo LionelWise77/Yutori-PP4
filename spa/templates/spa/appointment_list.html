@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="text-center">My Appointments</h1>
+    <h1 class="text-center mb-4">My Appointments</h1>
 
     <div class="row">
         {% for appointment in appointments %}
@@ -14,8 +14,7 @@
                     <p class="card-text"><strong>Date:</strong> {{ appointment.appointment_date|date:"Y-m-d" }}</p>
                     <p class="card-text"><strong>Time:</strong> {{ appointment.appointment_date|time:"H:i" }}</p>
 
-
-                    <!-- Buttons Reschedule and Delete -->
+                    <!-- Botones Reschedule y Delete -->
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                         data-bs-target="#rescheduleModal{{ appointment.id }}">Reschedule</button>
 
@@ -39,15 +38,18 @@
                         <form method="post" action="{% url 'my_appointments' %}">
                             {% csrf_token %}
                             <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
-                            {{ form.as_p }} <!-- Form for editing appointment -->
-                            <button type="submit" name="reschedule" class="btn btn-primary">Confirm Reschedule</button>
+                            <label for="new_date">Select New Date and Time</label>
+                            <input type="datetime-local" id="new_date" name="new_date" class="form-control">
+                            <button type="submit" name="reschedule" class="btn btn-primary mt-3">Confirm
+                                Reschedule</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modal for Deleting -->
+
+        <!-- Modal for delete -->
         <div class="modal fade" id="deleteModal{{ appointment.id }}" tabindex="-1"
             aria-labelledby="deleteModalLabel{{ appointment.id }}" aria-hidden="true">
             <div class="modal-dialog">

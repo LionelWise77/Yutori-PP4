@@ -3,7 +3,7 @@ from .models import Client, TreatmentService, Appointment, Invoice, Service
 from .forms import AppointmentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 
 # Create your views here.
@@ -107,3 +107,7 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'spa/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
