@@ -30,7 +30,7 @@ class TreatmentService(models.Model):
 
 class Appointment(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)  # Ensure 'Service' is defined before use
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)  
     appointment_date = models.DateTimeField()
     status = models.CharField(max_length=20, choices=[
         ('scheduled', 'Scheduled'),
@@ -49,4 +49,14 @@ class Invoice(models.Model):
 
     def __str__(self):
         return f"Invoice for {self.client.user.username} - {self.appointment.service.name}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    address = models.CharField(max_length=255, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
+    
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
 

@@ -1,7 +1,8 @@
 from django import forms
-from .models import Appointment, Service
+from .models import Appointment, Service, Profile
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
@@ -20,3 +21,13 @@ class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AppointmentForm, self).__init__(*args, **kwargs)
         self.fields['service'].queryset = Service.objects.all()
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['address', 'phone',]        

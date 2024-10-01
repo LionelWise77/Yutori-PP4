@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Client, TreatmentService, Appointment, Invoice, Service
-from .forms import AppointmentForm
+from .forms import AppointmentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
@@ -114,3 +114,25 @@ def logout_view(request):
 
 def profile(request):
     return render(request, 'spa/profile.html')
+
+@login_required
+def profile_view(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile')  # Redirige a la misma página después de actualizar
+        
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+    
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+    
+    return render(request, 'spa/profile.html', context)    
