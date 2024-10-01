@@ -18,15 +18,16 @@
         <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand fw-bold fs-3" href="{% url 'index' %}">
-                <img src="{% static 'images/logo.png' %}" alt="YutoriSpa Logo" class="me-2" style="width: 40px;"> YutoriSpa
+                <img src="{% static 'images/torii-gate.png' %}" alt="YutoriSpa Logo" class="me-2"
+                    style="width: 40px; height: auto;"> YutoriSpa
             </a>
-    
+
             <!-- Toggler for mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -40,14 +41,14 @@
                         <a class="nav-link fw-semibold" href="{% url 'appointment_list' %}">My Appointments</a>
                     </li>
                 </ul>
-    
+
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <img src="{% static 'images/user_icon.png' %}" alt="User Icon" class="rounded-circle"
-                                style="width: 30px;"> {{ user.username }}
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'images/user.png' %}" alt="User Icon" class="rounded-circle me-2"
+                                style="width: 35px; height: 35px; border: 2px solid #007bff;"> {{ user.username }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
@@ -63,7 +64,7 @@
             </div>
         </div>
     </nav>
-    
+
 
     <div class="container mt-4">
         {% block content %}
@@ -81,7 +82,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button class="btn-custom">Click Me</button>
-                   
+
                 </div>
             </div>
         </div>
