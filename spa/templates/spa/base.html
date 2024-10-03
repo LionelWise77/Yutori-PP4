@@ -19,7 +19,7 @@
             <!-- Brand/logo -->
             <a class="navbar-brand fw-bold fs-3" href="{% url 'index' %}">
                 <img src="{% static 'images/torii-gate.png' %}" alt="YutoriSpa Logo" class="me-2"
-                    style="width: 40px; height: auto;"> YutoriSpa
+                    style="width: 60px; height: auto; color: #f3d4d4;"> YutoriSpa
             </a>
 
             <!-- Toggler for mobile -->
@@ -89,8 +89,28 @@
         {% endblock %}
     </div>
 
-    <footer class="text-center mt-5">
-        <p>&copy; 2024 Yutori Spa</p>
+    <footer class="text-center mt-5 bg-light py-4">
+
+        <div class="text-center p-3">
+            © 2024 Yutori Spa
+          </div>  
+        
+        <div class="social-links">
+            <a href="https://facebook.com" class="me-3" target="_blank">
+                <img src="{% static 'images/facebook.png' %}" alt="Facebook" style="width: 30px;">
+            </a>
+            <a href="https://twitter.com" class="me-3" target="_blank">
+                <img src="{% static 'images/twitter.png' %}" alt="Twitter" style="width: 30px;">
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="{% static 'images/instagram.png' %}" alt="Instagram" style="width: 30px;">
+            </a>
+        </div>
+        <div class="mb-4">
+            <p>Developed by: Sebastian Perez B</p>
+          </div>
+          
+          
     </footer>
 
     <!-- Bootstrap JS (add this before closing body tag) -->
