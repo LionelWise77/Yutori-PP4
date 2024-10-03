@@ -9,7 +9,11 @@ class AppointmentForm(forms.ModelForm):
         model = Appointment
         fields = ['service', 'appointment_date']
         widgets = {
-            'appointment_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'appointment_date': forms.DateTimeInput(attrs={
+                'type': 'datetime-local', 
+                'class': 'form-control',
+                'format': '%Y-%m-%dT%H:%M'  # Formato para 'datetime-local'
+            }),
         }
 
     def clean_appointment_date(self):

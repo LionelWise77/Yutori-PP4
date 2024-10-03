@@ -78,7 +78,9 @@ YutoriSPA
 ## Testing 
 
 
-they Quiz works Properly and efficient !!
+YutoriSpa has been tested across different devices to ensure responsiveness and usability. Here’s a summary of the tests conducted:
+
+- **Responsiveness:** Tested on various screen sizes to ensure proper display and functionality.
 
 ![testing lighthouse](/assets/images/lighthouseFIFA.png)
 
@@ -94,7 +96,7 @@ i had issues with the background and the font style, was not enought for the acc
 
 ![bug](/assets/images/bugFIFA.png)
 
-also had isse wiht the handleNextButton Fucntion , because didn't want to show me the next question, and this becuase 'currentQuestion' and 'currentQuestion.answers' was 'undefined' , but i correct this Bug.
+- Minor styling adjustments are still required for certain breakpoints in mobile views.
 
 
 
@@ -131,7 +133,7 @@ The live link can be found here - https://lionelwise77.github.io/FIFA-World-Cup-
 
 ## Credits 
 
-- credits to my colleagues in Slack.
+- This project was developed by Sebastian Perez B.
 - tutorials about JS in Youtube , who help to understand better the functions.
 -   
 - CI Material content and chellengues. 
@@ -139,10 +141,10 @@ The live link can be found here - https://lionelwise77.github.io/FIFA-World-Cup-
 ### Content 
 
 
-- Instructions on how to learn more abiut JS taken from [ Tutorial begginers JS](https://www.youtube.com/watch?v=W6NZfCO5SIk)
+- The content for the services and profile pages was inspired by the wellness industry and massage therapy practices. [ Tutorial begginers JS](https://www.youtube.com/watch?v=W6NZfCO5SIk)
 - wikipedia material About FIFA World Cup [content](https://www.pexels.com/search/football/)
 
 ### Media
 
-- pictures from [images](https://www.pexels.com/search/football/)
+- All images used in this project are either custom-created or sourced from Pexels. [images](https://www.pexels.com/search/football/)
 - and Google it.

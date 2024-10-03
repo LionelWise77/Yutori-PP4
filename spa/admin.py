@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Appointment, Service, Client, TreatmentService
+from .models import Appointment, Service, Client
 
 # Register your models here.
 
@@ -19,7 +19,3 @@ class ClientAdmin(admin.ModelAdmin):
     list_display = ('user', 'phone', 'address')  # Display user, phone, and address
     search_fields = ('user__username', 'phone')  # Search by username and phone number
 
-@admin.register(TreatmentService)
-class TreatmentServiceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price')  # Display service name and price
-    search_fields = ('name',)  # Search by name
