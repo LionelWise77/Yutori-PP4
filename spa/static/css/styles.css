@@ -43,17 +43,18 @@ h2 {
 }
 
 .navbar-brand {
-    font-size: 1.5rem; 
+    font-size: 2rem; 
     color: #f3d4d4;;
 }
 
 .nav-link {
     color: #f0e4e4; 
     transition: color 0.3s ease;
+    font-size: 18px;
 }
 
 .nav-link:hover {
-    color: #eee6e6; 
+    color: #520d0d; 
 }
 
 .nav-item .btn-primary {
@@ -157,8 +158,15 @@ form input:focus, form select:focus, form textarea:focus {
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 20px;
+}
+
+.display-4 {
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    padding-bottom: 30px;
 }
 
 .hero-content p {
@@ -180,7 +188,7 @@ form input:focus, form select:focus, form textarea:focus {
 
 .text-center p {
     font-size: 1.3rem;
-
+    padding-bottom: 30px;
     color: #f8f9fa;
 }
 
@@ -211,7 +219,7 @@ a {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border-radius: 15px; 
     overflow: hidden;
-    height: 300px;
+    height: fixed;
     background-size: cover; 
     background-position: center;
     min-height: 300px;
@@ -250,7 +258,7 @@ a {
 
 .service-card .card-body {
     background-color: rgba(255, 255, 255, 0.8); 
-    position: absolute;
+    
     bottom: 0;
     width: 100%;
     padding: 20px;
@@ -263,9 +271,9 @@ a {
 }
 
 .service-card .card-text {
-    color: #6c757d;
+    color: #441618;
     text-overflow: ellipsis;
-    font-size: 14px;
+    font-size: 16px;
     overflow-wrap: break-word;
     white-space: normal;
 }
