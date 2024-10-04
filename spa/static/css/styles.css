@@ -87,7 +87,7 @@ form {
 
 form label {
     font-weight: 600;
-    color: #495057;
+    color: #ebe2e2;
 }
 
 form input, form select, form textarea {
@@ -334,7 +334,8 @@ a {
 }
 
 .btn-danger:hover {
-    background-color: #c82333;
+    background-color: #e7dede;
+    border-color: #dc3545;
 }
 
 .btn.btn-primary.btn-lg {
@@ -413,4 +414,13 @@ footer {
 .mb-4 {
     
     margin-top: 2rem;
+}
+
+/* alert notification */
+
+.alert-success {
+    --bs-alert-color: #0b7a47;
+    --bs-alert-bg: #b0ddc98a;
+    --bs-alert-border-color: var(--bs-success-border-subtle);
+    --bs-alert-link-color: var(--bs-success-text-emphasis);
 }
