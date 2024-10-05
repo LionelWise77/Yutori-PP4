@@ -82,7 +82,11 @@ YutoriSpa has been tested across different devices to ensure responsiveness and 
 
 - **Responsiveness:** Tested on various screen sizes to ensure proper display and functionality.
 
-![testing lighthouse](/assets/images/lighthouseFIFA.png)
+![testing lighthouse](/spa/static/images/lighthouse%20Yutori1.png)
+
+![testing lighthouse](/spa/static/images/lighthouse%20Yutori2.png)
+
+![testing lighthouse](/spa/static/images/lighthouse%20Yutori3.png)
 
 
 - the project looks good wiht a performance of 95%,
