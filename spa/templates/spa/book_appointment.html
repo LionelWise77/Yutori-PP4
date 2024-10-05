@@ -1,9 +1,10 @@
 {% extends 'spa/base.html' %}
 {% load static %}
+
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center mb-4">Book an Appointment</h2>
-    
+
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" class="shadow p-4 bg-white rounded">
@@ -13,6 +14,14 @@
                     <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
                 </div>
             </form>
+
+            {% if is_admin %}
+            <div class="alert alert-info mt-4">
+                <strong>Admin Notice:</strong> You can manage services and appointments here.
+                <!-- Aquí puedes agregar enlaces a otras vistas para administrar citas o servicios -->
+                <a href="{% url 'admin_view' %}" class="btn btn-secondary mt-2">Go to Admin Dashboard</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

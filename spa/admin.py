@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Appointment, Service, Client
+from .models import Appointment, Service, Client, Profile
 
 # Register your models here.
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('client', 'service', 'appointment_date', 'status')  # Added 'client' to display
-    list_filter = ('status', 'appointment_date')  # Filter appointments by status and date
-    search_fields = ('client__user__username', 'service__name')  # Search by client username and service name
+    list_display = ('client', 'service', 'appointment_date', 'status')  
+    list_filter = ('status', 'appointment_date')  
+    search_fields = ('client__user__username', 'service__name')  
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
@@ -16,6 +16,9 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('user', 'phone', 'address')  # Display user, phone, and address
-    search_fields = ('user__username', 'phone')  # Search by username and phone number
+    list_display = ('user', 'phone', 'address')  
+    search_fields = ('user__username', 'phone')  
 
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'address', 'phone']

@@ -33,6 +33,12 @@
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    {% if is_admin %}
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link fw-semibold" href="{% url 'service_list' %}">Services</a>
                     </li>
@@ -42,10 +48,6 @@
                     <li class="nav-item">
                         <a class="nav-link fw-semibold" href="{% url 'appointment_list' %}">My Appointments</a>
                     </li>
-                </ul>
-
-                <ul class="navbar-nav ms-auto">
-                    {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -95,8 +97,8 @@
 
         <div class="text-center p-3">
             © 2024 Yutori Spa
-          </div>  
-        
+        </div>
+
         <div class="social-links">
             <a href="https://facebook.com" class="me-3" target="_blank">
                 <img src="{% static 'images/facebook.png' %}" alt="Facebook" style="width: 30px;">
@@ -110,9 +112,12 @@
         </div>
         <div class="mb-4">
             <p>Developed by: Sebastian Perez B</p>
-          </div>
-          
-          
+        </div>
+
+    
+        
+
+
     </footer>
 
     <!-- Bootstrap JS (add this before closing body tag) -->

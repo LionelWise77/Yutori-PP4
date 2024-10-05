@@ -2,27 +2,39 @@
 {% load static %}
 
 {% block title %}
-    Welcome to YutoriSpa
+Welcome to YutoriSpa
 {% endblock %}
 
 {% block content %}
 <!-- Fullscreen background section -->
- 
 <div class="hero-section">
     <div class="container h-100 d-flex justify-content-center align-items-center">
         <div class="text-center text-white">
+            {% if user.is_authenticated %}
+            {% if is_admin %}
+            <h1 class="display-4">Welcome Admin</h1>
+            <p class="lead">Manage our services and customer appointments.</p>
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-lg btn-primary">Go to Admin Dashboard</a>
+            {% elif is_customer %}
+            <h1 class="display-4">Welcome, {{ user.username }}</h1>
+            <p class="lead">Explore our services and book your next appointment!</p>
+            <a href="{% url 'service_list' %}" class="btn btn-lg btn-primary">Explore Our Services</a>
+            {% else %}
             <h1 class="display-4">Welcome to YutoriSpa</h1>
             <p class="lead">"Yutori is a Japanese philosophy that means a space to have peace of mind"</p>
             <a href="{% url 'service_list' %}" class="btn btn-lg btn-primary">Explore Our Services</a>
+            {% endif %}
+            {% else %}
+            <h1 class="display-4">Welcome to YutoriSpa</h1>
+            <p class="lead">"Yutori is a Japanese philosophy that means a space to have peace of mind"</p>
+            <a href="{% url 'service_list' %}" class="btn btn-lg btn-primary">Explore Our Services</a>
+            {% endif %}
         </div>
     </div>
 </div>
-
-
 
 <!-- Other content below the hero section -->
 <div class="container mt-5">
     <!-- Add any other sections or content you'd like -->
 </div>
 {% endblock %}
-

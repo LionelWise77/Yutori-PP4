@@ -5,17 +5,28 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
-
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import Group
 
 # Create your views here.
 
 @login_required
 def service_list(request):
     services = Service.objects.all()
-    return render(request, 'spa/service_list.html', {'services': services})
+    is_admin = request.user.groups.filter(name='Admin').exists()
+    is_customer = request.user.groups.filter(name='Customer').exists()
+    
+    return render(request, 'spa/service_list.html', {
+        'services': services,
+        'is_admin': is_admin,
+        'is_customer': is_customer,
+    })
 
 @login_required
 def book_appointment(request, service_id=None):
+    
+    is_admin = request.user.groups.filter(name="Admin").exists()
+
     if service_id:
         service = get_object_or_404(Service, id=service_id)
     else:
@@ -31,28 +42,34 @@ def book_appointment(request, service_id=None):
     else:
         form = AppointmentForm(initial={'service': service})
 
-    return render(request, 'spa/book_appointment.html', {'form': form})
+    return render(request, 'spa/book_appointment.html', {'form': form, 'is_admin': is_admin})
 
 
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(client=request.user.client)
     return render(request, 'spa/appointment_list.html', {'appointments': appointments})
-
-def index(request):
-    
-    return render(request, 'index.html',)    
+   
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
+            
+            # Asigna el usuario al grupo 'Customer'
+            customer_group = Group.objects.get(name='Customer')
+            user.groups.add(customer_group)
+            
+            # Crea el perfil asociado al usuario
+            Profile.objects.create(user=user)
+            
             login(request, user)
-            return redirect('index') 
+            return redirect('home')
     else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+        form = RegisterForm()
+    
+    return render(request, 'registration/register.html', {'form': form})
 
 @login_required
 def my_appointments(request):
@@ -129,4 +146,27 @@ def profile_view(request):
         'profile_form': profile_form
     }
     
-    return render(request, 'spa/profile.html', context)    
+    return render(request, 'spa/profile.html', context)
+
+    
+def admin_required(user):
+    return user.groups.filter(name='Admin').exists()
+
+@user_passes_test(admin_required)
+def admin_view(request):
+    
+    return render(request, 'spa/admin_dashboard.html')
+
+
+def index(request):
+    is_admin = request.user.groups.filter(name='Admin').exists() if request.user.is_authenticated else False
+    is_customer = request.user.groups.filter(name='Customer').exists() if request.user.is_authenticated else False
+    
+    return render(request, 'index.html', {'is_admin': is_admin, 'is_customer': is_customer})
+
+def some_view(request):
+    context = {
+        'is_admin': request.user.groups.filter(name='Admin').exists(),
+        
+    }
+    return render(request, 'spa/your_template.html', context)    
