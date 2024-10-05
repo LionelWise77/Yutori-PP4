@@ -219,7 +219,6 @@ a {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border-radius: 15px; 
     overflow: hidden;
-    height: fixed;
     background-size: cover; 
     background-position: center;
     min-height: 300px;

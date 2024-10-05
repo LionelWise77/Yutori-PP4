@@ -89,18 +89,19 @@ YutoriSpa has been tested across different devices to ensure responsiveness and 
 ![testing lighthouse](/spa/static/images/lighthouse%20Yutori3.png)
 
 
-- the project looks good wiht a performance of 95%,
+- the project looks good wiht a performance of 99%,
 - accesibility of 100%,
 - best practices of 100%,
 - SEO of 91%,
 
 ### responsive in all screen sizes.
 
-i had issues with the background and the font style, was not enought for the accesibility i wanted so i changed the colours at the last moment.
 
-![bug](/assets/images/bugFIFA.png)
 
-- Minor styling adjustments are still required for certain breakpoints in mobile views.
+![bug](/spa/static/images/debugg-footer.png)
+
+- Check CSS properties such as `position: fixed;`, `flexbox`, or `grid` to ensure the footer stays at the bottom.
+- The footer should remain fixed at the bottom of the page, regardless of the content height.
 
 
 
@@ -118,6 +119,16 @@ i had issues with the background and the font style, was not enought for the acc
       - Function with the largest signature take 1 arguments, while the median is 0.
       - Largest function has 9 statements in it, while the median is 4..
       - TThe most complex function has a cyclomatic complexity value of 4 while the median is 2.
+
+ ### PIP8
+
+
+- **Admin.py**
+ ![PIP8 Admin.py](/spa/static/images/pip8%20ADMIN.png)
+- **Models.py**
+ ![PIP8 Models.py](/spa/static/images/pip8%20models.py.png)
+- **Views.py**
+ ![PIP8 Views.py](/spa/static/images/pip8-views.py.png)
 
 ### Unfixed Bugs
 

@@ -85,7 +85,9 @@ def my_appointments(request):
         if 'delete' in request.POST:
             if appointment.client == request.user.client:
                 appointment.delete()
-                messages.success(request, 'deleted successfully.')
+                messages.success(
+                    request, 'Appointment deleted successfully.'
+                    )
                 return redirect('my_appointments')
 
         elif 'reschedule' in request.POST:
@@ -95,7 +97,9 @@ def my_appointments(request):
                     try:
                         appointment.appointment_date = new_date
                         appointment.save()
-                        messages.success(request, 'rescheduled successfully.')
+                        messages.success(
+                            request, 'Appointment rescheduled successfully.'
+                            )
                     except ValueError:
                         messages.error(request, 'Invalid date format.')
                 else:
@@ -164,10 +168,13 @@ def admin_view(request):
 
 def index(request):
     """Render the homepage with information about whether the user is an admin or a customer."""
-    is_admin = request.user.groups.filter(name='Admin').exists() if request.user.is_authenticated else False
-    is_customer = request.user.groups.filter(name='Customer').exists() if request.user.is_authenticated else False
+    is_admin = request.user.groups.filter(name='Admin').exists() \
+        if request.user.is_authenticated else False
+    is_customer = request.user.groups.filter(name='Customer').exists() \
+        if request.user.is_authenticated else False
 
     return render(request, 'index.html', {'is_admin': is_admin, 'is_customer': is_customer})
+
 
 
 def some_view(request):
