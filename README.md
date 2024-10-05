@@ -5,7 +5,7 @@
 YutoriSPA 
  is a web application that offers a variety of massage services to customers. Users can create accounts, book appointments, reschedule, and manage their bookings, all in one convenient place. Our goal is to help you relax and rejuvenate with ease applying the japanese philosophy of Yutori which is **a space to have peace of mind**
 
-![Yutori mockup](media/love_maths_mockup.png)
+![Yutori mockup](/spa/static/images/mockup-Yutori.png)
 
 ## Features 
 
@@ -18,13 +18,20 @@ YutoriSPA
 
 ### The Header
 
-![Header Yutori](/assets/images/H1%20and%20header%20WCQUIZ.png)
+### - The header displays the YutoriSpa logo along with easy-to-use navigation links for services, booking, profile, login and appointments.
 
-* The header displays the YutoriSpa logo along with easy-to-use navigation links for services, booking, profile, login and appointments.
+- Header Logout
 
-  
+![Header Yutori](/spa/static/images/Header-logout.png)
 
-![Logo torii gate](/assets/images/copa-mundo.webp)
+
+- Header Login
+
+![Header Yutori](/spa/static/images/Header-login.png)
+
+# torii gate
+
+![Logo torii gate](/spa/static/images/torii-gate-header.png)
 
 * __the logo have a symbolicall meaning:__ A torii (Japanese: 鳥居, [to. ɾi. i]) is a traditional Japanese gate most commonly found at the entrance of or within a Shinto shrine, where it symbolically marks the transition from the mundane to the sacred, and a spot where kami are welcomed and thought to travel through
 
@@ -32,15 +39,16 @@ YutoriSPA
 
   - This section displays all the services YutoriSpa offers, allowing users to explore and choose based on their needs.
   
-![Services](/assets/images/questionSection2.png)
+![Services](/spa/static/images/services-README.png)
 
 
 
-### Booking System
+### Booking System(login required)
 
   - Our booking system allows customers to pick a service and schedule an appointment with ease. The process is streamlined for convenience.
+  - The client must to create an account to book a service.
 
-![Booking system](/assets/images/quizAREA.png)
+![Booking system](/spa/static/images/Booking.section.png)
 
 
 ### Manage your booking
@@ -48,32 +56,52 @@ YutoriSPA
   - This section will allow the user to manage , reschedule and cancel the appointment. 
   
 
-![manage your booking](/assets/images/score%20and%20next.png)
+![manage your booking](/spa/static/images/manage-booking.png)
 
 ### User Profile
 
+
+- profile login
+
+![User Profile](/spa/static/images/profile-login.png)
+
 - Customers can update their profiles, including their contact information, photo, and more.
 
-![User Profile](/assets/images/playagainButton.png)
+![User Profile](/spa/static/images/my-profile.png)
 
 ### Home Page
 
 - The home page give to the users a **welcome to YutoriSpa** with the link to the **explore our services**.
 
-![Hero](/assets/images/playagainButton.png)
+![Hero](/spa/static/images/welcome.png)
 
 ### login/register/password
 
-- give the option to the users to register an account , and reset the password in case the users forgott.
+- login 
 
-![login/register/password](/assets/images/playagainButton.png)
+![login/register/password](/spa/static/images/login.btn.png)
 
-### Footer with Social Media Links
+- login form
+
+![login/register/password](/spa/static/images/login.form.png)
+
+- register form 
+
+![login/register/password](/spa/static/images/register.form.png.png)
+
+- reset password
+
+![login/register/password](/spa/static/images/forgot-pswrd.btn.png)
+
+### - give the option to the users to register an account , and reset the password in case the users forgott.
+
+
+## Footer with Social Media Links
 
 - The footer contains links to social media profiles, helping customers stay connected with YutoriSpa. Links open in a new tab to avoid disruption of browsing.
-- also with the copyrights and signiture by me , the developer of this application.
+- The copyrights and signiture by me , the developer of this application.
 
-![login/register/password](/assets/images/playagainButton.png)
+![login/register/password](/spa/static/images/footer.readme.png)
 
 ## Testing 
 
@@ -109,16 +137,19 @@ YutoriSpa has been tested across different devices to ensure responsiveness and 
 ### Validator Testing 
 
 - HTML
-    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Flionelwise77.github.io%2FFIFA-World-Cup-Quiz%2F)
+    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F)
 - CSS
-    - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Flionelwise77.github.io%2FFIFA-World-Cup-Quiz%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 - JavaScript
     - No errors were found when passing through the official [Jshint validator](https://jshint.com/)
+    **Metrics**
       - The following metrics were returned: 
-      - There are 10 functions in this file.
-      - Function with the largest signature take 1 arguments, while the median is 0.
-      - Largest function has 9 statements in it, while the median is 4..
-      - TThe most complex function has a cyclomatic complexity value of 4 while the median is 2.
+      - There are 2 functions in this file.
+      - Function with the largest signature take 1 arguments, while the median is 1.
+      - Largest function has 2 statements in it, while the median is 1.5.
+      - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
+  - **One warning**
+      - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
 
  ### PIP8
 

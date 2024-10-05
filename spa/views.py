@@ -12,7 +12,7 @@ from .models import Appointment, Service, Profile
 from .forms import AppointmentForm, UserUpdateForm, ProfileUpdateForm, RegisterForm
 
 
-@login_required
+
 def service_list(request):
     """Display a list of all services."""
     services = Service.objects.all()
