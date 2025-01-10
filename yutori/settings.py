@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-9v*1m-we=#lhtpzex%@6vlx7hf8u5xix@!$ix#jz#lk$!5w8_s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000-lionelwise77-yutoripp4-8x1dni3x4o1.ws.codeinstitute-ide.net",
+ALLOWED_HOSTS = ["8000-lionelwise77-yutoripp4-51lotwowxtv.ws.codeinstitute-ide.net",
 ".herokuapp.com"
 ]
 
@@ -91,8 +91,7 @@ WSGI_APPLICATION = 'yutori.wsgi.application'
 #}
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")),
 }
 
 
