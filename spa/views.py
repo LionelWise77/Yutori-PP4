@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group
 from .models import Appointment, Service, Profile
 from .forms import AppointmentForm, UserUpdateForm, ProfileUpdateForm, RegisterForm
 
+
 def index(request):
     """Render the homepage with information about whether the user is an admin or a customer."""
     is_admin = request.user.groups.filter(name='Admin').exists() if request.user.is_authenticated else False

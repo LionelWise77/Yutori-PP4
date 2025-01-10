@@ -5,7 +5,6 @@ from .models import Appointment, Service, Client, Profile
 
 # Register your models here.
 
-
 # Create the appointment list in the admin
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
@@ -15,7 +14,6 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_filter = ('status', 'appointment_date')
     search_fields = ('client__user__username', 'service__name')
 
-
 # Create the services admin
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
@@ -23,7 +21,6 @@ class ServiceAdmin(admin.ModelAdmin):
 
     list_display = ['name', 'description', 'price']
     search_fields = ['name']
-
 
 # Create a client admin
 @admin.register(Client)
@@ -33,10 +30,9 @@ class ClientAdmin(admin.ModelAdmin):
     list_display = ('user', 'phone', 'address')
     search_fields = ('user__username', 'phone')
 
-
 # Create a profile admin
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     """Admin view for managing user profiles."""
 
-    list_display = ['user', 'address', 'phone']
+    list_display = ['user', 'phone']  # Removed 'address'

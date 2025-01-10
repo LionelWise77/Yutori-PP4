@@ -2,13 +2,22 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 
 class Client(models.Model):
     """Represents a client in the system."""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(
+        max_length=15,
+        validators=[
+            RegexValidator(
+                regex=r'^\+?1?\d{9,15}$',
+                message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+            )
+        ]
+    )
     address = models.TextField()
 
     def __str__(self):
@@ -49,8 +58,15 @@ class Profile(models.Model):
     """Represents additional profile information for a user."""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=255, blank=True)
-    phone = models.CharField(max_length=15, blank=True)
+    phone = models.CharField(
+        max_length=15,
+        validators=[
+            RegexValidator(
+                regex=r'^\+?1?\d{9,15}$',
+                message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+            )
+        ]
+    )
 
     def __str__(self):
         """Return the profile's username."""
