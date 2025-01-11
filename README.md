@@ -151,14 +151,15 @@ theres not unfixed Bugs.
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub)
+The application is deployed on Heroku and GitHub. The steps to deploy are as follows:
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-  - In the GitHub repository, navigate to the Settings tab
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+1. **Create a Heroku Account**: If you don't have one, create an account at [Heroku](https://www.heroku.com/).
+2. **Install Heroku CLI**: Follow the instructions to install the Heroku CLI from [here](https://devcenter.heroku.com/articles/heroku-cli).
+3. **Login to Heroku**: Use the command `heroku login` to login to your Heroku account.
+4. **Create a New Heroku App**: Use the command `heroku create your-app-name` to create a new Heroku app.
+5. **Set Environment Variables**: Set the `SECRET_KEY` and `DEBUG` environment variables in Heroku:
 
-The live link can be found here - https://lionelwise77.github.io/FIFA-World-Cup-Quiz/
+The live link can be found here on GitHub - https://lionelwise77.github.io/Yutori-PP4/
 
 ## Credits
 
