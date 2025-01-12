@@ -43,6 +43,7 @@ class Appointment(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     appointment_date = models.DateTimeField()
+    appointment_time = models.TimeField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=[
         ('scheduled', 'Scheduled'),
         ('completed', 'Completed'),

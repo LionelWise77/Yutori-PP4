@@ -7,9 +7,10 @@ from datetime import date, datetime
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ['service', 'appointment_date']
+        fields = ['service', 'appointment_date', 'appointment_time']
         widgets = {
             'appointment_date': forms.DateInput(attrs={'type': 'date'}),
+            'appointment_time': forms.TimeInput(attrs={'type': 'time'}),
         }
 
     def clean_appointment_date(self):
