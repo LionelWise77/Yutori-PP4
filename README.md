@@ -171,9 +171,17 @@ The application is deployed on Heroku and GitHub. The steps to deploy are as fol
 
 1. **Create a Heroku Account**: If you don't have one, create an account at [Heroku](https://www.heroku.com/).
 2. **Install Heroku CLI**: Follow the instructions to install the Heroku CLI from [here](https://devcenter.heroku.com/articles/heroku-cli).
-3. **Login to Heroku**: Use the command `heroku login` to login to your Heroku account.
+3. **Login to Heroku**: Use the command `heroku login` to login to my Heroku account.
+
+- sebbepebe27@gmail.com
+
 4. **Create a New Heroku App**: Use the command `heroku create your-app-name` to create a new Heroku app.
+
+- my app Named : YUTORISPA
+
 5. **Set Environment Variables**: Set the `SECRET_KEY` and `DEBUG` environment variables in Heroku:
+
+- link canbe found on HEROKU :
 
 The live link can be found here on GitHub - https://lionelwise77.github.io/Yutori-PP4/
 
