@@ -181,7 +181,7 @@ The application is deployed on Heroku and GitHub. The steps to deploy are as fol
 
 5. **Set Environment Variables**: Set the `SECRET_KEY` and `DEBUG` environment variables in Heroku:
 
-- link canbe found on HEROKU :
+- link canbe found on HEROKU : https://yutorispa-4e43a431e62f.herokuapp.com/
 
 The live link can be found here on GitHub - https://lionelwise77.github.io/Yutori-PP4/
 
