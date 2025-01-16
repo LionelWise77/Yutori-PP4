@@ -29,7 +29,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['phone',]
+        fields = ['phone','address']
 
 class RegisterForm(forms.ModelForm):
     class Meta:

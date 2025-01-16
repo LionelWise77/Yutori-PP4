@@ -51,23 +51,31 @@ def appointment_list(request):
 def register(request):
     """Handle user registration."""
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            customer_group = Group.objects.get(name='Customer')
-            user.groups.add(customer_group)
+        user_form = RegisterForm(request.POST)
+        profile_form = ProfileUpdateForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            try:
+                user = user_form.save()
+                customer_group = Group.objects.get(name='Customer')
+                user.groups.add(customer_group)
 
-            # Check if profile already exists
-            if not Profile.objects.filter(user=user).exists():
-                Profile.objects.create(user=user)
+                profile, created = Profile.objects.get_or_create(user=user)
+                if created:
+                    profile.phone = profile_form.cleaned_data.get('phone')
+                    profile.address = profile_form.cleaned_data.get('address')
+                    profile.save()
 
-            login(request, user)
-            messages.success(request, 'Registration successful.')
-            return redirect('home')
+                login(request, user)
+                return redirect('home')  # Ensure 'home' is a valid URL name
+            except Exception as e:
+                user_form.add_error(None, f"An error occurred: {e}")
+        else:
+            print(user_form.errors, profile_form.errors)  # Debugging: Print form errors to the console
     else:
-        form = RegisterForm()
+        user_form = RegisterForm()
+        profile_form = ProfileUpdateForm()
 
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'registration/register.html', {'user_form': user_form, 'profile_form': profile_form})
 
 @login_required
 def my_appointments(request):

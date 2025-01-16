@@ -60,6 +60,7 @@ class Profile(models.Model):
     """Represents additional profile information for a user."""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    address = models.CharField(max_length=255, blank=True)
     phone = models.CharField(
         max_length=15,
         validators=[
