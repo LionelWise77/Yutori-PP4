@@ -12,6 +12,12 @@
       media="print"
       onload="this.media='all'"
     />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <noscript>
       <link
         rel="stylesheet"
@@ -93,14 +99,11 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img
-                  src="{% static 'images/user.png' %}"
-                  alt="User Icon"
-                  class="rounded-circle me-2"
-                  width="35"
-                  height="35"
-                  style="border: 2px solid #007bff"
-                />
+                <i
+                  class="fas fa-user-circle fa-lg me-2"
+                  style="color: #007bff"
+                ></i>
+
                 {{ user.username }}
               </a>
               <ul
@@ -154,37 +157,26 @@
       </div>
     </main>
 
-    <footer class="text-center mt-5 bg-light py-4">
-      <div class="text-center p-3">© 2024 Yutori Spa</div>
+    <footer class="bg-dark text-light mt-auto py-4">
+      <div class="container text-center">
+        <div class="mb-3">
+          <a
+            href="https://facebook.com"
+            class="text-light me-4"
+            target="_blank"
+          >
+            <i class="fab fa-facebook fa-xl"></i>
+          </a>
+          <a href="https://twitter.com" class="text-light me-4" target="_blank">
+            <i class="fab fa-twitter fa-xl"></i>
+          </a>
+          <a href="https://instagram.com" class="text-light" target="_blank">
+            <i class="fab fa-instagram fa-xl"></i>
+          </a>
+        </div>
 
-      <div class="social-links">
-        <a href="https://facebook.com" class="me-3" target="_blank">
-          <img
-            src="{% static 'images/facebook.png' %}"
-            alt="Facebook"
-            width="30"
-            height="30"
-          />
-        </a>
-        <a href="https://twitter.com" class="me-3" target="_blank">
-          <img
-            src="{% static 'images/twitter.png' %}"
-            alt="Twitter"
-            width="30"
-            height="30"
-          />
-        </a>
-        <a href="https://instagram.com" target="_blank">
-          <img
-            src="{% static 'images/instagram.png' %}"
-            alt="Instagram"
-            width="30"
-            height="30"
-          />
-        </a>
-      </div>
-      <div class="mb-4">
-        <p>Developed by: Sebastian Perez B</p>
+        <p class="mb-1">© 2024 YutoriSpa. All rights reserved.</p>
+        <p class="small">Developed by: Sebastian Perez B</p>
       </div>
     </footer>
 

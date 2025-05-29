@@ -6,9 +6,7 @@
 }
 
 html {
-  background: url(/static/images/Mount-Fuji.webp) no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
+  background-color: #f3d4d4;
 }
 
 body {
@@ -43,7 +41,7 @@ h2 {
 }
 
 .bg-light {
-  background-color: rgb(136 54 36 / 86%) !important;
+  background-color: #9e1414 !important;
   font-family: "Franklin Gothic Medium", Arial, sans-serif;
 }
 
@@ -337,27 +335,27 @@ a {
 
 /* Background Images for Services */
 .service-1 {
-  background-image: url("/static/images/spa1.jpg");
+  background-image: url("/static/images/spa1.jpeg");
 }
 
 .service-2 {
-  background-image: url("/static/images/spa2.jpg");
+  background-image: url("/static/images/spa2.webp");
 }
 
 .service-3 {
-  background-image: url("/static/images/sparelax.jpg");
+  background-image: url("/static/images/sparelax.webp");
 }
 
 .service-4 {
-  background-image: url("/static/images/thaimassage.jpg");
+  background-image: url("/static/images/thaimassage.webp");
 }
 
 .service-5 {
-  background-image: url("/static/images/shouldersmassage.jpg");
+  background-image: url("/static/images/shouldersmassage.webp");
 }
 
 .service-6 {
-  background-image: url("/static/images/facialmassage.jpg");
+  background-image: url("/static/images/facialmassage.jpeg");
 }
 
 .shadow-sm {
@@ -448,19 +446,23 @@ input[type="datetime-local"] {
 /* footer */
 
 footer {
-  color: white;
-  padding: 20px 0;
-  position: relative;
-  width: 100%;
-  bottom: 0;
+  background: linear-gradient(to right, #3a0d0d, #5e1a1a);
+  color: #f8f9fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
 }
 
-.p-3 {
-  padding: 2rem !important;
+footer a {
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.mb-4 {
-  margin-top: 2rem;
+footer a:hover {
+  color: #f0a8a8;
+  transform: scale(1.2);
+}
+
+footer i {
+  vertical-align: middle;
 }
 
 /* alert notification */
