@@ -8,13 +8,18 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 from .models import Appointment, Service, Profile
 from .forms import AppointmentForm, UserUpdateForm, ProfileUpdateForm, RegisterForm
+from datetime import datetime, date
+from django.utils import timezone
+from django.utils.timezone import localtime, now
+
+
 
 
 def index(request):
     """Render the homepage with information about whether the user is an admin or a customer."""
     is_admin = request.user.groups.filter(name='Admin').exists() if request.user.is_authenticated else False
     is_customer = request.user.groups.filter(name='Customer').exists() if request.user.is_authenticated else False
-    return render(request, 'index.html', {'is_admin': is_admin, 'is_customer': is_customer})
+    return render(request, 'spa/index.html', {'is_admin': is_admin, 'is_customer': is_customer})
 
 def service_list(request):
     """Display a list of all services."""
@@ -23,24 +28,44 @@ def service_list(request):
     is_customer = request.user.groups.filter(name='Customer').exists()
     return render(request, 'spa/service_list.html', {'services': services, 'is_admin': is_admin, 'is_customer': is_customer})
 
+
+
 @login_required
 def book_appointment(request, service_id=None):
-    """Allow users to book an appointment for a specific service."""
     is_admin = request.user.groups.filter(name="Admin").exists()
     service = get_object_or_404(Service, id=service_id) if service_id else None
+    
+    min_datetime = localtime(now()).strftime("%Y-%m-%dT%H:%M")
+    
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
-        if form.is_valid():
-            appointment = form.save(commit=False)
-            appointment.client = request.user.client
-            appointment.save()
-            messages.success(request, 'Appointment booked successfully.')
-            return redirect('appointment_list')
+        datetime_str = request.POST.get("datetime")  # Nuevo campo combinado
+
+        if form.is_valid() and datetime_str:
+            try:
+                combined_dt = datetime.strptime(datetime_str, "%Y-%m-%dT%H:%M")
+                combined_dt = timezone.make_aware(combined_dt)
+                
+                if combined_dt < timezone.now():
+                    messages.error(request, "You cannot select a past date and time.")
+                else:
+                    appointment = form.save(commit=False)
+                    appointment.client = request.user.client
+                    appointment.appointment_date = combined_dt
+                    appointment.save()
+                    messages.success(request, "Appointment booked successfully.")
+                    return redirect("appointment_list")
+            except ValueError:
+                messages.error(request, "Invalid datetime format.")
+        else:
+            messages.error(request, "Please provide a valid date and time.")
     else:
         form = AppointmentForm(initial={'service': service})
 
-    return render(request, 'spa/book_appointment.html', {'form': form, 'is_admin': is_admin})
+    return render(request, 'spa/book_appointment.html', {'form': form, 'is_admin': is_admin, 'min_datetime': min_datetime})
+
+
 
 @login_required
 def appointment_list(request):
@@ -94,23 +119,31 @@ def my_appointments(request):
 
         elif 'reschedule' in request.POST:
             if appointment.client == request.user.client:
-                new_date = request.POST.get('new_date')
-                if new_date:
-                    try:
-                        appointment.appointment_date = new_date
+                new_datetime_str = request.POST.get('new_datetime')
+
+            if new_datetime_str:
+              try:
+                # Convertir el string en objeto datetime
+                    new_datetime_obj = datetime.strptime(new_datetime_str, '%Y-%m-%dT%H:%M')
+
+                # Validar que la nueva fecha no esté en el pasado
+                    if new_datetime_obj < datetime.now():
+                        messages.error(request, 'You cannot select a past date and time.')
+                    else:
+                        appointment.appointment_date = new_datetime_obj
                         appointment.save()
                         messages.success(request, 'Appointment rescheduled successfully.')
-                    except ValueError:
-                        messages.error(request, 'Invalid date format.')
-                else:
-                    messages.error(request, 'Please provide a valid date for rescheduling.')
-                return redirect('my_appointments')
+              except ValueError:
+                    messages.error(request, 'Invalid date and time format.')
+        else:
+            messages.error(request, 'Please provide a valid date and time.')
+
 
     return render(request, 'spa/appointment_list.html', {'appointments': appointments})
 
 def login_view(request):
     """Handle user login."""
-    if request.method == 'POST':
+    if request.method == 'POST':    
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')

@@ -1,28 +1,48 @@
-{% extends 'spa/base.html' %}
-{% load static %}
+{% extends 'spa/base.html' %} {% load static %} {% block content %}
+<!-- prettier-ignore -->
 
-{% block content %}
+{% load tz %}
+{% now "UTC" as now_utc %}
+{% now "Y-m-d\\TH:i" as min_datetime %}
+
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Book an Appointment</h2>
+  <h2 class="text-center mb-4">Book an Appointment</h2>
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form method="post" class="shadow p-4 bg-white rounded">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
-                </div>
-            </form>
-
-            {% if is_admin %}
-            <div class="alert alert-info mt-4">
-                <strong>Admin Notice:</strong> You can manage services and appointments here.
-                <!-- Aquí puedes agregar enlaces a otras vistas para administrar citas o servicios -->
-                <a href="{% url 'admin_view' %}" class="btn btn-secondary mt-2">Go to Admin Dashboard</a>
-            </div>
-            {% endif %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="post" class="shadow p-4 bg-white rounded">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_service">Service:</label>
+          {{ form.service }}
         </div>
+
+        <div class="mb-3">
+          <label for="datetime">Select Date and Time:</label>
+          <input
+            type="datetime-local"
+            name="datetime"
+            class="form-control"
+            min="{{ min_datetime }}"
+            required
+          />
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
+        </div>
+      </form>
+
+      {% if is_admin %}
+      <div class="alert alert-info mt-4">
+        <strong>Admin Notice:</strong> You can manage services and appointments
+        here.
+        <a href="{% url 'admin_view' %}" class="btn btn-secondary mt-2"
+          >Go to Admin Dashboard</a
+        >
+      </div>
+      {% endif %}
     </div>
+  </div>
 </div>
 {% endblock %}
