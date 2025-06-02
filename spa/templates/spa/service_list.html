@@ -1,49 +1,75 @@
-{% extends 'spa/base.html' %}
-
-{% block title %}Our Services{% endblock %}
-
-{% block content %}
+{% extends 'spa/base.html' %} {% load static %} {% block title %} Our Services
+{% endblock %} {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Our Exclusive Services</h1>
-    <div class="row">
-        {% for service in services %}
-        <div class="col-md-4 mb-4">
-            <div class="card service-card service-{{ forloop.counter }} shadow-sm">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ service.name }}</h5>
-                    <p class="card-text">
-                        {{ service.description|truncatewords:10 }}
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#serviceModal{{ service.id }}">More Info</a>
-                    </p>
-                    <h6 class="text-muted mb-3">${{ service.price }}</h6>
-                    <a href="{% url 'book_appointment_with_service' service.id %}"
-                        class="btn btn-primary btn-block">Book</a>
-                </div>
-            </div>
+  <h1 class="text-center mb-4">Our Exclusive Services</h1>
+  <div class="row">
+    {% for service in services %}
+    <div class="col-md-4 mb-4">
+      <div class="card service-card service-{{ forloop.counter }} shadow-lg">
+        <div class="card-body text-center">
+          <h3 class="card-title">{{ service.name }}</h3>
+          <p class="card-text">
+            {{ service.description|truncatewords:10 }}
+            <a
+              href="#"
+              data-bs-toggle="modal"
+              data-bs-target="#serviceModal{{ service.id }}"
+              >More Info</a
+            >
+          </p>
+          <h4 class="text-muted mb-3 fw-bold">${{ service.price }}</h4>
+          <a
+            href="{% url 'book_appointment_with_service' service.id %}"
+            class="btn btn-book"
+            >Book Now</a
+          >
         </div>
-
-        <!-- Modal for Service Details -->
-        <div class="modal fade" id="serviceModal{{ service.id }}" tabindex="-1"
-            aria-labelledby="serviceModalLabel{{ service.id }}" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="serviceModalLabel{{ service.id }}">{{ service.name }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ service.description }}</p>
-                        <h6 class="text-muted">Price: ${{ service.price }}</h6>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a href="{% url 'book_appointment_with_service' service.id %}" class="btn btn-primary">Book
-                            Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+      </div>
     </div>
+
+    <!-- Modal for Service Details -->
+    <div
+      class="modal fade"
+      id="serviceModal{{ service.id }}"
+      tabindex="-1"
+      aria-labelledby="serviceModalLabel{{ service.id }}"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="serviceModalLabel{{ service.id }}">
+              {{ service.name }}
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>{{ service.description }}</p>
+            <h6 class="text-muted">Price: ${{ service.price }}</h6>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <a
+              href="{% url 'book_appointment_with_service' service.id %}"
+              class="btn btn-primary"
+              >Book Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
