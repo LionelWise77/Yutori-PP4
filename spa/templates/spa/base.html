@@ -120,7 +120,14 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  <form
+                    method="post"
+                    action="{% url 'logout' %}"
+                    style="display: inline"
+                  >
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item">Logout</button>
+                  </form>
                 </li>
               </ul>
             </li>
