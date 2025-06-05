@@ -91,9 +91,7 @@ WSGI_APPLICATION = 'yutori.wsgi.application'
 
 DATABASES = {
        'default': dj_database_url.parse(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")),
-    }
-
-
+    }   
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -150,3 +148,7 @@ DEFAULT_FROM_EMAIL = 'your-email@example.com'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'home'
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+

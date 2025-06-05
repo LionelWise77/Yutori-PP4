@@ -74,33 +74,47 @@ def appointment_list(request):
     return render(request, 'spa/appointment_list.html', {'appointments': appointments})
 
 def register(request):
-    """Handle user registration."""
     if request.method == 'POST':
         user_form = RegisterForm(request.POST)
         profile_form = ProfileUpdateForm(request.POST)
+
         if user_form.is_valid() and profile_form.is_valid():
+            print("✔️ Ambos formularios son válidos")
             try:
-                user = user_form.save()
+                user = user_form.save(commit=False)
+                raw_password = user_form.cleaned_data['password']
+                user.set_password(raw_password)
+                user.save()
+
                 customer_group = Group.objects.get(name='Customer')
                 user.groups.add(customer_group)
 
-                profile, created = Profile.objects.get_or_create(user=user)
-                if created:
-                    profile.phone = profile_form.cleaned_data.get('phone')
-                    profile.address = profile_form.cleaned_data.get('address')
-                    profile.save()
+                profile = user.profile
+                profile.phone = profile_form.cleaned_data.get('phone')
+                profile.address = profile_form.cleaned_data.get('address')
+                profile.save()
 
                 login(request, user)
-                return redirect('home')  # Ensure 'home' is a valid URL name
+                print("✔️ Usuario autenticado:", request.user.is_authenticated)
+                print("🔐 Sesión ID:", request.session.session_key)
+                return redirect('home')
             except Exception as e:
-                user_form.add_error(None, f"An error occurred: {e}")
+                print("❌ Error durante el guardado:", e)
+                user_form.add_error(None, f"Ocurrió un error: {e}")
         else:
-            print(user_form.errors, profile_form.errors)  # Debugging: Print form errors to the console
+            print("❌ Formularios inválidos")
+            print("Errores user_form:", user_form.errors)
+            print("Errores profile_form:", profile_form.errors)
+
     else:
         user_form = RegisterForm()
         profile_form = ProfileUpdateForm()
 
-    return render(request, 'registration/register.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'registration/register.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
 
 @login_required
 def my_appointments(request):

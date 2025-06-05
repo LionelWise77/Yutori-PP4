@@ -104,22 +104,45 @@ h3 {
 }
 
 /* USER DROPDOWN */
-.navbar .dropdown-toggle {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
+/* ✅ Mejora visual completa para el dropdown */
+.dropdown-menu {
+  border-radius: 10px;
+  margin-top: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  background-color: #fff;
+  padding: 0;
 }
 
-.navbar .dropdown-toggle img {
-  border: 2px solid #fff;
-  border-radius: 50%;
-  margin-right: 8px;
+
+.dropdown-menu .dropdown-item {
+  padding: 12px 20px;
+  font-weight: 500;
+  color: #333;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
 }
 
-element.style {
-  width: 60px;
-  height: auto;
-  color: #f3d4d4;
+
+.dropdown-menu a.dropdown-item:hover {
+  background-color: #e6f7ff !important;
+  color: #004085 !important;
+  border-left: 4px solid #0d6efd;
+  padding-left: 1.25rem;
+}
+
+
+.dropdown-menu form {
+  margin: 0;
+}
+
+
+.dropdown-menu form .dropdown-item {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
 }
 
 /* Form */

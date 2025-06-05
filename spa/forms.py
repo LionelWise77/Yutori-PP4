@@ -38,6 +38,10 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['phone', 'address']
+        widgets = {
+            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
@@ -50,10 +54,21 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['username', 'password', 'email']
         widgets = {
-            'password': forms.PasswordInput(),
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'form-control'})
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        raw_password = self.cleaned_data['password']
+        user.set_password(raw_password)  # 🔒 Encripta la contraseña
+        if commit:
+            user.save()
+        return user
+
