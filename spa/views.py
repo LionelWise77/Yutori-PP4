@@ -34,24 +34,29 @@ def service_list(request):
 def book_appointment(request, service_id=None):
     is_admin = request.user.groups.filter(name="Admin").exists()
     service = get_object_or_404(Service, id=service_id) if service_id else None
-    
+
     min_datetime = localtime(now()).strftime("%Y-%m-%dT%H:%M")
-    
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
-        datetime_str = request.POST.get("datetime")  # Nuevo campo combinado
+        datetime_str = request.POST.get("datetime")
 
         if form.is_valid() and datetime_str:
             try:
                 combined_dt = datetime.strptime(datetime_str, "%Y-%m-%dT%H:%M")
                 combined_dt = timezone.make_aware(combined_dt)
-                
+
                 if combined_dt < timezone.now():
                     messages.error(request, "You cannot select a past date and time.")
                 else:
                     appointment = form.save(commit=False)
-                    appointment.client = request.user.client
+                    
+                    try:
+                        appointment.client = request.user.client
+                    except AttributeError:
+                        messages.error(request, "Your client profile is missing. Please contact support.")
+                        return redirect("home")
+
                     appointment.appointment_date = combined_dt
                     appointment.save()
                     messages.success(request, "Appointment booked successfully.")
@@ -63,7 +68,15 @@ def book_appointment(request, service_id=None):
     else:
         form = AppointmentForm(initial={'service': service})
 
-    return render(request, 'spa/book_appointment.html', {'form': form, 'is_admin': is_admin, 'min_datetime': min_datetime})
+    return render(
+        request,
+        'spa/book_appointment.html',
+        {
+            'form': form,
+            'is_admin': is_admin,
+            'min_datetime': min_datetime
+        }
+    )
 
 
 
