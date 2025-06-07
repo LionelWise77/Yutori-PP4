@@ -30,15 +30,21 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1",  
-"8000-lionelwise77-yutoripp4-51lotwowxtv.ws.codeinstitute-ide.net",  
-".herokuapp.com"
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "8000-lionelwise77-yutoripp4-51lotwowxtv.ws.codeinstitute-ide.net",
+    "yutorispa-4e43a431e62f.herokuapp.com",  
+    ".herokuapp.com"  
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://*.codeinstitute-ide.net",
-"https://*.herokuapp.com",
-"http://localhost:8000",
-"http://127.0.0.1:8000"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net",
+    "https://*.herokuapp.com",
+    "https://yutorispa-4e43a431e62f.herokuapp.com",  
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
 
 
 # Application definition
