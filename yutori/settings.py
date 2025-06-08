@@ -41,7 +41,7 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
     "https://*.herokuapp.com",
-    "https://yutorispa-4e43a431e62f.herokuapp.com",  
+    "https://yutorispa-4e43a431e62f.herokuapp.com",
     "http://localhost:8000",
     "http://127.0.0.1:8000"
 ]
@@ -155,6 +155,6 @@ DEFAULT_FROM_EMAIL = 'your-email@example.com'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'home'
 
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
