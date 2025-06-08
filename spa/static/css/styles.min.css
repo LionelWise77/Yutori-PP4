@@ -35,8 +35,6 @@ h1,
 .display-4 {
   font-family: "Georgia", serif;
   font-weight: 700;
-  color:     font-family: "Georgia", serif;
-  font-weight: 700;
   color: #921b1b;
   text-transform: uppercase;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
@@ -50,8 +48,6 @@ h3 {
   margin-bottom: 1rem;
   text-transform: capitalize;
 }
-
-
 
 /* Navbar */
 
@@ -113,7 +109,6 @@ h3 {
   padding: 0;
 }
 
-
 .dropdown-menu .dropdown-item {
   padding: 12px 20px;
   font-weight: 500;
@@ -121,7 +116,6 @@ h3 {
   background-color: transparent;
   transition: background-color 0.2s ease-in-out;
 }
-
 
 .dropdown-menu a.dropdown-item:hover {
   background-color: #e6f7ff !important;
@@ -133,7 +127,6 @@ h3 {
 .dropdown-menu form {
   margin: 0;
 }
-
 
 .dropdown-menu form .dropdown-item {
   background-color: transparent;
@@ -195,7 +188,7 @@ input[type="datetime-local"] {
   font-size: 18px;
   border-radius: 30px;
   border: 2px solid var(--main-color);
-  background:linear-gradient(to right, #83363d, #9f5e5e);
+  background: linear-gradient(to right, #83363d, #9f5e5e);
   color: #fff;
   transition: all 0.4s ease-in-out;
 }
@@ -323,7 +316,8 @@ a {
 }
 
 .card-body {
-  background: linear-gradient(90deg, #6f1c1b4b, #b23a48a1)  /* Cambia el color de fondo del cuerpo de la tarjeta */; 
+  background: linear-gradient(90deg, #6f1c1b4b, #b23a48a1)
+    /* Cambia el color de fondo del cuerpo de la tarjeta */;
   padding: 25px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -341,7 +335,6 @@ a {
   color: #ffffff;
   margin-bottom: 0.8rem;
 }
-
 
 .text-muted {
   --bs-text-opacity: 1;
