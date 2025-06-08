@@ -1,5 +1,7 @@
 # YutoriSpa
 
+🚀 [Live Site on Heroku](https://yutorispa-4e43a431e62f.herokuapp.com/)
+
 Welcome to **YutoriSpa**, a web application that offers a variety of massage services to customers. Users can create accounts, book appointments, reschedule, and manage their bookings—all in one convenient place. Our goal is to help you relax and rejuvenate by embracing the Japanese philosophy of **Yutori**, which emphasizes creating **a space for peace of mind**.
 
 ---
@@ -17,9 +19,14 @@ Welcome to **YutoriSpa**, a web application that offers a variety of massage ser
    - [Manage Your Booking](#manage-your-booking)
    - [User Profile](#user-profile)
    - [Footer](#footer)
-4. [Testing](#testing)
-5. [Deployment](#deployment)
-6. [Credits and Acknowledgments](#credits-and-acknowledgments)
+4. [Technologies](#UsedTech)
+5. [Testing](#testing)
+   - [Manual Testing](#manual-testing)
+   - [Validation Tools](#validation-tools)
+6. [Deployment](#deployment)
+7. [Security](#security)
+8. [Agile Development](#agile-development)
+9. [Credits and Acknowledgments](#credits-and-acknowledgments)
 
 ---
 
@@ -125,7 +132,54 @@ The footer includes social media links and developer credits.
 
 ---
 
+## Technologies
+
+- Python & Django
+- PostgreSQL
+- HTML5, CSS3, Bootstrap 5
+- JavaScript (para modales y alerts)
+- Heroku para deploy
+
 ## Testing
+
+### Manual Testing
+
+Each feature was tested both in expected (happy flow) and exception (bad flow) scenarios. Below are detailed test cases:
+
+#### Feature: Booking a Valid Appointment
+
+- **Expected**: A valid future appointment should be booked successfully.
+- **Test**: Selected a service and chose a valid future date and time.
+- **Result**: Booking confirmed, success message displayed.
+- **Fix**: Not needed.
+
+#### Feature: Booking with a Past Date
+
+- **Expected**: The system should prevent past-date bookings.
+- **Test**: Attempted to book an appointment for yesterday.
+- **Result**: Error message displayed; form did not submit.
+- **Fix**: Added custom form validation to block past dates.
+
+#### Feature: User Login
+
+- **Expected**: User should be logged in with correct credentials.
+- **Test**: Logged in with a registered user account.
+- **Result**: User redirected to dashboard; welcome message displayed.
+- **Fix**: Not needed.
+
+#### Feature: Protected Route Without Authentication
+
+- **Expected**: Unauthenticated users should be redirected to the login page.
+- **Test**: Tried accessing `/my-appointments/` without logging in.
+- **Result**: Redirected to login view.
+- **Fix**: Not needed.
+
+#### Feature: Canceling an Appointment
+
+- **Expected**: User should be able to cancel a scheduled appointment and receive confirmation.
+- **Test**: Canceled an appointment from the user dashboard.
+- **Result**: Appointment was deleted; success message displayed.
+- **Fix**: Not needed.
 
 ### Responsiveness
 
@@ -140,10 +194,10 @@ The application has been tested across various devices to ensure compatibility.
 
 ![testing lighthouse](/spa/static/images/lighthouse%20Yutori1.png)
 
-### Validator Testing
+### Validation tools
 
 - **HTML**: Passed W3C validation.
-- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F)
+- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com)
 - **CSS**: Passed Jigsaw validation.
 - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 - **JavaScript**: Passed JSHint validation (minor warnings addressed).
@@ -165,9 +219,9 @@ The application has been tested across various devices to ensure compatibility.
 
 ## Deployment
 
-The application was deployed using [GitHub Pages](https://pages.github.com/).
+The application was deployed using [Heroku](https://dashboard.heroku.com/apps/yutorispa/deploy/heroku-git).
 
-The application is deployed on Heroku and GitHub. The steps to deploy are as follows:
+The application is deployed on Heroku. The steps to deploy are as follows:
 
 1. **Create a Heroku Account**: If you don't have one, create an account at [Heroku](https://www.heroku.com/).
 2. **Install Heroku CLI**: Follow the instructions to install the Heroku CLI from [here](https://devcenter.heroku.com/articles/heroku-cli).
@@ -181,11 +235,43 @@ The application is deployed on Heroku and GitHub. The steps to deploy are as fol
 
 5. **Set Environment Variables**: Set the `SECRET_KEY` and `DEBUG` environment variables in Heroku:
 
-- link canbe found on HEROKU : https://yutorispa-4e43a431e62f.herokuapp.com/
+- Add Procfile, requirements.txt, and runtime.txt.
+
+- link canbe found on HEROKU : https://dashboard.heroku.com/apps/yutorispa/deploy/heroku-git
 
 The live link can be found here on GitHub - https://lionelwise77.github.io/Yutori-PP4/
 
+**Local SETUP**
+
+1. Clone the repository.
+
+2. Set up a virtual environment and install requirements.
+
+3. Set .env variables locally.
+
+4. Run migrations and launch server (python manage.py runserver).
+
 ---
+
+**Security**
+
+- DEBUG mode is off in production.
+
+- All secrets and credentials are stored in environment variables.
+
+- CSRF protection enabled.
+
+- Users restricted from accessing others' data.
+
+**Agile Development**
+
+- Used GitHub Projects for Kanban board.
+
+- Each user story linked to an issue.
+
+- Prioritization labels used.
+
+- Grouped user stories under epics (Authentication, Booking System, UI).
 
 ### Media
 
@@ -200,3 +286,5 @@ The live link can be found here on GitHub - https://lionelwise77.github.io/Yutor
 - CI Material content and chellengues.
 - **Design Inspiration**: Japanese culture and aesthetics.
 - **Frameworks & Tools**: Django, Bootstrap, Lighthouse.
+
+**"Sometimes the most productive thing you can do is relax." — Mark Black**
