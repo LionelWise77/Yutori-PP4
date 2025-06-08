@@ -195,7 +195,7 @@ input[type="datetime-local"] {
   font-size: 18px;
   border-radius: 30px;
   border: 2px solid var(--main-color);
-  background-color: linear-gradient(to right, #83363d, #9f5e5e);
+  background linear-gradient(to right, #83363d, #9f5e5e);
   color: #fff;
   transition: 0.4s;
 }
