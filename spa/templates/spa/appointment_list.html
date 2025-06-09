@@ -7,7 +7,7 @@
   <div class="row">
     {% for appointment in appointments %}
     <div class="col-md-6 mb-4">
-      <div class="card">
+      <div class="appointment-card">
         <div class="card-body">
           <h5 class="card-title">{{ appointment.service.name }}</h5>
           <p class="card-text">
@@ -20,7 +20,7 @@
           <!-- Botones Reschedule y Delete -->
           <button
             type="button"
-            class="btn btn-warning"
+            class="btn btn-reschedule"
             data-bs-toggle="modal"
             data-bs-target="#rescheduleModal{{ appointment.id }}"
           >
@@ -29,7 +29,7 @@
 
           <button
             type="button"
-            class="btn btn-danger"
+            class="btn btn-delete"
             data-bs-toggle="modal"
             data-bs-target="#deleteModal{{ appointment.id }}"
           >

@@ -198,13 +198,14 @@ The application has been tested across various devices to ensure compatibility.
 
 - **HTML**: Passed W3C validation.
 - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com)
-- **CSS**: Passed Jigsaw validation.
-- No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- ### CSS Validation
+
+- The CSS file has been successfully validated using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
+  ✅ [View validated CSS](https://yutorispa-4e43a431e62f.herokuapp.com/static/css/style.css) – No errors found.
+
 - **JavaScript**: Passed JSHint validation (minor warnings addressed).
 - No errors were found when passing through the official [Jshint validator](https://jshint.com/)
   **Metrics** - The following metrics were returned: - There are 2 functions in this file. - Function with the largest signature take 1 arguments, while the median is 1. - Largest function has 2 statements in it, while the median is 1.5. - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
-  - **One warning**
-    - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
 
 ---
 

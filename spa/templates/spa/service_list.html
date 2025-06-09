@@ -6,9 +6,9 @@
     {% for service in services %}
     <div class="col-md-4 mb-4">
       <div class="card service-card service-{{ forloop.counter }} shadow-lg">
-        <div class="card-body text-center">
-          <h3 class="card-title">{{ service.name }}</h3>
-          <p class="card-text">
+        <div class="service-body text-center">
+          <h3 class="service-title">{{ service.name }}</h3>
+          <p class="service-text">
             {{ service.description|truncatewords:10 }}
             <a
               href="javascript:void(0)"
