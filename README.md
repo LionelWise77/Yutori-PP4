@@ -264,7 +264,12 @@ The live link can be found here on GitHub - https://lionelwise77.github.io/Yutor
 
 - Users restricted from accessing others' data.
 
-**Agile Development**
+## Agile Methodology 🧩
+
+This project was managed using Agile methodology through GitHub Projects.  
+The board includes epics, user stories, priorities, and progress tracking.
+
+🔗 [View Agile Project Board](https://github.com/users/LionelWise77/projects/7)
 
 - Used GitHub Projects for Kanban board.
 
